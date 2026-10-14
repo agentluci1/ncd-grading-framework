@@ -1,11 +1,11 @@
 # Grade this project: DC Trades Network (DCN)
 
 Rubric (read it fully first, it is the only standard):
-https://dc-trades-network.web.app/grading/NCD-GRADING-FRAMEWORK.md
+https://raw.githubusercontent.com/agentluci1/ncd-grading-framework/main/NCD-GRADING-FRAMEWORK.md
 
 ## Prompt to paste into any AI model
 
-> Read the framework at https://dc-trades-network.web.app/grading/NCD-GRADING-FRAMEWORK.md and follow its "Instructions for the grading model" exactly. Grade the DC Trades Network preview below with the **app-build** profile (directory + career app), and also report Website NCD gates 1-8 as an informational appendix. Test at 1440 and 390. Cite evidence for every score, mark anything you cannot test as UNVERIFIED, compute the weighted overall with the formula, and output the JSON then the Markdown scorecard.
+> Read the framework at https://raw.githubusercontent.com/agentluci1/ncd-grading-framework/main/NCD-GRADING-FRAMEWORK.md and follow its "Instructions for the grading model" exactly. Grade the DC Trades Network preview below with the **app-build** profile (directory + career app), and also report Website NCD gates 1-8 as an informational appendix. Test at 1440 and 390. Cite evidence for every score, mark anything you cannot test as UNVERIFIED, compute the weighted overall with the formula, and output the JSON then the Markdown scorecard.
 
 ## Project
 

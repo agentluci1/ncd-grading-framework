@@ -1,7 +1,7 @@
 # NCD Grading Framework (Agent Luci / Shipgate)
 
 Version: 2026-10-14.1, derived from Shipgate rubric 2026-10-11.1, profile `ncd-min-tier` 2026-10-11.1, the NCD Framework v2 and the Minimum Tier (Mastodon Bar).
-Canonical URL: https://dc-trades-network.web.app/grading/NCD-GRADING-FRAMEWORK.md
+Canonical URL: https://raw.githubusercontent.com/agentluci1/ncd-grading-framework/main/NCD-GRADING-FRAMEWORK.md
 
 ---
 
