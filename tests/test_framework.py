@@ -52,6 +52,14 @@ class FrameworkTests(unittest.TestCase):
         jsonschema.validate(website, schema)
         with self.assertRaises(jsonschema.ValidationError):
             jsonschema.validate(dict(website, usability=example["usability"]), schema)
+        unmeasured = dict(example, usability={"measured": False, "score": None, "tasks": []})
+        jsonschema.validate(unmeasured, schema)
+        for bad_u in ({"measured": False, "score": 7, "tasks": []},
+                      {"measured": False, "score": None, "tasks": example["usability"]["tasks"]},
+                      {"measured": True, "score": None, "tasks": example["usability"]["tasks"]},
+                      {"measured": True, "score": 8, "tasks": []}):
+            with self.assertRaises(jsonschema.ValidationError):
+                jsonschema.validate(dict(example, usability=bad_u), schema)
         extra = dict(example, bonus=1)
         with self.assertRaises(jsonschema.ValidationError):
             jsonschema.validate(extra, schema)

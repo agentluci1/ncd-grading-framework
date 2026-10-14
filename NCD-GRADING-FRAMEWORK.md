@@ -206,7 +206,7 @@ For products whose main job is a task. Same nine dimensions, weights and gates. 
 | 5 | A task needs help text, guessing or trial and error; jargon labels; hidden primary action; a wrong turn without an obvious way back. |
 | 0-3 | A new user cannot finish a primary task. |
 
-Rules: report U separately with a step log per task (screen, action, observation). If you cannot interact with the app (text-only fetch), you cannot measure U: set `usability.score` to null, `usability.measured` to false, mark gate A2 UNVERIFIED (which blocks), and do not apply the U caps; never invent a U. U < 7 caps design_polish and copy_quality at U and fails gate A2. U < 5 is a critical. U is evidence in correctness, design_polish, copy_quality and completeness.
+Rules: report U separately with a step log per task (screen, action, observation). If you cannot interact with the app (text-only fetch), you cannot measure U: set `usability.measured` to false, `usability.score` to null and `usability.tasks` to [], mark gate A2 UNVERIFIED (which blocks), and do not apply the U caps; never invent a U. U < 7 caps design_polish and copy_quality at U and fails gate A2. U < 5 is a critical. U is evidence in correctness, design_polish, copy_quality and completeness.
 
 ---
 
@@ -245,7 +245,10 @@ Output one JSON object exactly matching this schema. No extra keys. All nine dim
       "properties": {"measured": {"type": "boolean"}, "score": {"type": ["number", "null"], "minimum": 0, "maximum": 10},
         "tasks": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["task", "completed", "steps", "hesitations", "wrong_turns", "log"],
           "properties": {"task": {"type": "string"}, "completed": {"type": "boolean"}, "steps": {"type": "integer", "minimum": 0},
-            "hesitations": {"type": "integer", "minimum": 0}, "wrong_turns": {"type": "integer", "minimum": 0}, "log": {"type": "array", "items": {"type": "string"}}}}}}},
+            "hesitations": {"type": "integer", "minimum": 0}, "wrong_turns": {"type": "integer", "minimum": 0}, "log": {"type": "array", "items": {"type": "string"}}}}}},
+      "if": {"properties": {"measured": {"const": false}}},
+      "then": {"properties": {"score": {"type": "null"}, "tasks": {"maxItems": 0}}},
+      "else": {"properties": {"score": {"type": "number"}, "tasks": {"minItems": 1}}}},
     "critical_findings": {"type": "array", "items": {"allOf": [{"$ref": "#/$defs/finding"}, {"properties": {"severity": {"const": "critical"}}}]}},
     "overall": {"type": "number", "minimum": 0, "maximum": 10},
     "min_dim": {"type": "number"},
@@ -256,7 +259,7 @@ Output one JSON object exactly matching this schema. No extra keys. All nine dim
   "allOf": [
     {"if": {"properties": {"profile": {"const": "app-build"}}},
      "then": {"properties": {"gates": {"minItems": 6, "maxItems": 6, "items": {"properties": {"id": {"enum": ["A1", "A2", "A3", "A4", "A5", "A6"]}}}, "allOf": [{"contains": {"properties": {"id": {"const": "A1"}}}}, {"contains": {"properties": {"id": {"const": "A2"}}}}, {"contains": {"properties": {"id": {"const": "A3"}}}}, {"contains": {"properties": {"id": {"const": "A4"}}}}, {"contains": {"properties": {"id": {"const": "A5"}}}}, {"contains": {"properties": {"id": {"const": "A6"}}}}]},
-                             "usability": {"type": "object", "properties": {"tasks": {"minItems": 1}}}}}},
+                             "usability": {"type": "object"}}}},
     {"if": {"properties": {"profile": {"const": "website-ncd"}}},
      "then": {"properties": {"usability": {"type": "null"}, "gates": {"minItems": 8, "maxItems": 8, "items": {"properties": {"id": {"enum": ["1", "2", "3", "4", "5", "6", "7", "8"]}}}, "allOf": [{"contains": {"properties": {"id": {"const": "1"}}}}, {"contains": {"properties": {"id": {"const": "2"}}}}, {"contains": {"properties": {"id": {"const": "3"}}}}, {"contains": {"properties": {"id": {"const": "4"}}}}, {"contains": {"properties": {"id": {"const": "5"}}}}, {"contains": {"properties": {"id": {"const": "6"}}}}, {"contains": {"properties": {"id": {"const": "7"}}}}, {"contains": {"properties": {"id": {"const": "8"}}}}]}}}}
   ],
