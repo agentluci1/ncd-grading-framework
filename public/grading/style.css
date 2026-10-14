@@ -1,0 +1,7 @@
+body{font-family:system-ui,sans-serif;max-width:960px;margin:2rem auto;padding:0 1rem;line-height:1.5;color:#111}
+nav{margin-bottom:1rem}a{color:#0645ad}
+table{border-collapse:collapse;width:100%;font-size:.9rem;display:block;overflow-x:auto}
+td,th{border:1px solid #ccc;padding:.35rem .5rem;vertical-align:top}
+pre{background:#f5f5f5;padding:1rem;overflow-x:auto}code{font-size:.85rem}
+:focus-visible{outline:3px solid #0645ad;outline-offset:2px}
+.align-right{text-align:right}.align-center{text-align:center}.align-left{text-align:left}

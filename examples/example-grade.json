@@ -1,0 +1,187 @@
+{
+ "framework_version": "2026-10-14.1",
+ "project": {
+  "name": "Example",
+  "urls": [
+   "https://example.com/"
+  ],
+  "repo": null,
+  "build_ref": null
+ },
+ "profile": "app-build",
+ "graded_at": "2026-10-14T09:00:00-05:00",
+ "grader_model": "example",
+ "access": {
+  "browser_interaction": true,
+  "screenshots": true,
+  "lighthouse": false,
+  "source_code": false
+ },
+ "summary": "Example scorecard used by tests.",
+ "dims": {
+  "correctness": {
+   "score": 8,
+   "applicable": true,
+   "evidence": [
+    "https://example.com/ #start click -> /done 200"
+   ],
+   "caps_applied": [],
+   "findings": []
+  },
+  "code_quality": {
+   "score": 6,
+   "applicable": true,
+   "evidence": [
+    "UNVERIFIED: private repo"
+   ],
+   "caps_applied": [
+    "no verifiable evidence: max 6"
+   ],
+   "findings": []
+  },
+  "security": {
+   "score": 7,
+   "applicable": true,
+   "evidence": [
+    "/account redirects to sign-in when signed out"
+   ],
+   "caps_applied": [],
+   "findings": []
+  },
+  "accessibility": {
+   "score": 7,
+   "applicable": true,
+   "evidence": [
+    "shots/home-390.png"
+   ],
+   "caps_applied": [],
+   "findings": []
+  },
+  "performance": {
+   "score": 7,
+   "applicable": true,
+   "evidence": [
+    "home loads in 1.8 s on throttled 4G (devtools)"
+   ],
+   "caps_applied": [],
+   "findings": []
+  },
+  "design_polish": {
+   "score": 8,
+   "applicable": true,
+   "evidence": [
+    "shots/home-1440.png"
+   ],
+   "caps_applied": [],
+   "findings": []
+  },
+  "copy_quality": {
+   "score": 8,
+   "applicable": true,
+   "evidence": [
+    "banned-list scan: 0 hits"
+   ],
+   "caps_applied": [],
+   "findings": []
+  },
+  "framework_conformance": {
+   "score": 7,
+   "applicable": true,
+   "evidence": [
+    "footer badge present on / and /about/"
+   ],
+   "caps_applied": [],
+   "findings": []
+  },
+  "completeness": {
+   "score": 7,
+   "applicable": true,
+   "evidence": [
+    "empty state on /list with 0 items"
+   ],
+   "caps_applied": [],
+   "findings": [
+    {
+     "severity": "medium",
+     "location": "/list",
+     "issue": "No loading state",
+     "impact": "Blank screen on slow network",
+     "fix": "Add skeleton rows"
+    }
+   ]
+  }
+ },
+ "gates": [
+  {
+   "id": "A1",
+   "name": "Primary task works end to end",
+   "result": "PASS",
+   "evidence": [
+    "shots/gate-a1.png"
+   ]
+  },
+  {
+   "id": "A2",
+   "name": "Zero-figuring-out usability U >= 7",
+   "result": "PASS",
+   "evidence": [
+    "shots/gate-a2.png"
+   ]
+  },
+  {
+   "id": "A3",
+   "name": "States",
+   "result": "PASS",
+   "evidence": [
+    "shots/gate-a3.png"
+   ]
+  },
+  {
+   "id": "A4",
+   "name": "Data and auth",
+   "result": "UNVERIFIED",
+   "evidence": [
+    "UNVERIFIED: server-side validation needs source access"
+   ]
+  },
+  {
+   "id": "A5",
+   "name": "Installable / mobile",
+   "result": "PASS",
+   "evidence": [
+    "shots/gate-a5.png"
+   ]
+  },
+  {
+   "id": "A6",
+   "name": "No dead ends",
+   "result": "PASS",
+   "evidence": [
+    "shots/gate-a6.png"
+   ]
+  }
+ ],
+ "usability": {
+  "score": 7.5,
+  "tasks": [
+   {
+    "task": "Create a list",
+    "completed": true,
+    "steps": 4,
+    "hesitations": 1,
+    "wrong_turns": 0,
+    "log": [
+     "home: tapped New list"
+    ]
+   }
+  ]
+ },
+ "critical_findings": [],
+ "overall": 7.23,
+ "min_dim": 6,
+ "min_dim_name": "code_quality",
+ "verdict": "BLOCK",
+ "unverified": [
+  "source code: private repo"
+ ]
+}
