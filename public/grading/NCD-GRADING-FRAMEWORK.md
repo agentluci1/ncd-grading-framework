@@ -206,7 +206,7 @@ For products whose main job is a task. Same nine dimensions, weights and gates. 
 | 5 | A task needs help text, guessing or trial and error; jargon labels; hidden primary action; a wrong turn without an obvious way back. |
 | 0-3 | A new user cannot finish a primary task. |
 
-Rules: report U separately with a step log per task (screen, action, observation). U < 7 caps design_polish and copy_quality at U and fails gate A2. U < 5 is a critical. U is evidence in correctness, design_polish, copy_quality and completeness.
+Rules: report U separately with a step log per task (screen, action, observation). If you cannot interact with the app (text-only fetch), you cannot measure U: set `usability.score` to null, `usability.measured` to false, mark gate A2 UNVERIFIED (which blocks), and do not apply the U caps; never invent a U. U < 7 caps design_polish and copy_quality at U and fails gate A2. U < 5 is a critical. U is evidence in correctness, design_polish, copy_quality and completeness.
 
 ---
 
@@ -241,8 +241,8 @@ Output one JSON object exactly matching this schema. No extra keys. All nine dim
     "gates": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["id", "name", "result", "evidence"],
       "properties": {"id": {"type": "string", "description": "1-8 for website-ncd, A1-A6 for app-build"}, "name": {"type": "string"},
         "result": {"enum": ["PASS", "FAIL", "UNVERIFIED"]}, "evidence": {"type": "array", "minItems": 1, "items": {"type": "string"}}}}},
-    "usability": {"type": ["object", "null"], "description": "Required object for app-build; null for website-ncd", "additionalProperties": false, "required": ["score", "tasks"],
-      "properties": {"score": {"type": "number", "minimum": 0, "maximum": 10},
+    "usability": {"type": ["object", "null"], "description": "Required object for app-build; null for website-ncd", "additionalProperties": false, "required": ["measured", "score", "tasks"],
+      "properties": {"measured": {"type": "boolean"}, "score": {"type": ["number", "null"], "minimum": 0, "maximum": 10},
         "tasks": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["task", "completed", "steps", "hesitations", "wrong_turns", "log"],
           "properties": {"task": {"type": "string"}, "completed": {"type": "boolean"}, "steps": {"type": "integer", "minimum": 0},
             "hesitations": {"type": "integer", "minimum": 0}, "wrong_turns": {"type": "integer", "minimum": 0}, "log": {"type": "array", "items": {"type": "string"}}}}}}},

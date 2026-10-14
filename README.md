@@ -1,6 +1,6 @@
 # NCD grading framework site
 
-Public, non-sensitive rubric for external AI graders. Published from GitHub: https://raw.githubusercontent.com/agentluci1/ncd-grading-framework/main/NCD-GRADING-FRAMEWORK.md (raw) and https://agentluci1.github.io/ncd-grading-framework/ (HTML). Firebase target `grading` (default site of project `dc-trades-network`) is prepared but blocked by shipgate (best 8.2/8.5).
+Public, non-sensitive rubric for external AI graders. Published from GitHub: https://raw.githubusercontent.com/agentluci1/ncd-grading-framework/main/NCD-GRADING-FRAMEWORK.md (raw) and https://agentluci1.github.io/ncd-grading-framework/ (HTML). Firebase target `grading` (default site of project `dc-trades-network`) is prepared but blocked by shipgate (best 8.2 vs 8.5).
 
 - Sources of truth: `public/grading/NCD-GRADING-FRAMEWORK.md` and `public/grading/GRADE-DCN.md`. Never hand-edit the `.html` files.
 - Setup: `pip install "markdown==3.10.2" "jsonschema>=4.19"` (markdown is pinned so generated HTML is byte-stable; jsonschema is for tests).

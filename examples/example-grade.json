@@ -131,9 +131,9 @@
   {
    "id": "A3",
    "name": "States",
-   "result": "PASS",
+   "result": "FAIL",
    "evidence": [
-    "shots/gate-a3.png"
+    "/list shows a blank screen while loading (no loading state); see completeness finding"
    ]
   },
   {
@@ -162,6 +162,7 @@
   }
  ],
  "usability": {
+  "measured": true,
   "score": 7.5,
   "tasks": [
    {

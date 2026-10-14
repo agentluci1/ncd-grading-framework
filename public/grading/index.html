@@ -455,7 +455,7 @@ List every critical once per distinct issue. Each finding states location, obser
 </tr>
 </tbody>
 </table>
-<p>Rules: report U separately with a step log per task (screen, action, observation). U &lt; 7 caps design_polish and copy_quality at U and fails gate A2. U &lt; 5 is a critical. U is evidence in correctness, design_polish, copy_quality and completeness.</p>
+<p>Rules: report U separately with a step log per task (screen, action, observation). If you cannot interact with the app (text-only fetch), you cannot measure U: set <code>usability.score</code> to null, <code>usability.measured</code> to false, mark gate A2 UNVERIFIED (which blocks), and do not apply the U caps; never invent a U. U &lt; 7 caps design_polish and copy_quality at U and fails gate A2. U &lt; 5 is a critical. U is evidence in correctness, design_polish, copy_quality and completeness.</p>
 <hr />
 <h2>9. Output JSON schema (exact)</h2>
 <p>Output one JSON object exactly matching this schema. No extra keys. All nine dimension keys required; <code>applicable</code> is always true. <code>overall</code> = your computed weighted mean after caps.</p>
@@ -485,8 +485,8 @@ List every critical once per distinct issue. Each finding states location, obser
     &quot;gates&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;items&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;additionalProperties&quot;: false, &quot;required&quot;: [&quot;id&quot;, &quot;name&quot;, &quot;result&quot;, &quot;evidence&quot;],
       &quot;properties&quot;: {&quot;id&quot;: {&quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;1-8 for website-ncd, A1-A6 for app-build&quot;}, &quot;name&quot;: {&quot;type&quot;: &quot;string&quot;},
         &quot;result&quot;: {&quot;enum&quot;: [&quot;PASS&quot;, &quot;FAIL&quot;, &quot;UNVERIFIED&quot;]}, &quot;evidence&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;minItems&quot;: 1, &quot;items&quot;: {&quot;type&quot;: &quot;string&quot;}}}}},
-    &quot;usability&quot;: {&quot;type&quot;: [&quot;object&quot;, &quot;null&quot;], &quot;description&quot;: &quot;Required object for app-build; null for website-ncd&quot;, &quot;additionalProperties&quot;: false, &quot;required&quot;: [&quot;score&quot;, &quot;tasks&quot;],
-      &quot;properties&quot;: {&quot;score&quot;: {&quot;type&quot;: &quot;number&quot;, &quot;minimum&quot;: 0, &quot;maximum&quot;: 10},
+    &quot;usability&quot;: {&quot;type&quot;: [&quot;object&quot;, &quot;null&quot;], &quot;description&quot;: &quot;Required object for app-build; null for website-ncd&quot;, &quot;additionalProperties&quot;: false, &quot;required&quot;: [&quot;measured&quot;, &quot;score&quot;, &quot;tasks&quot;],
+      &quot;properties&quot;: {&quot;measured&quot;: {&quot;type&quot;: &quot;boolean&quot;}, &quot;score&quot;: {&quot;type&quot;: [&quot;number&quot;, &quot;null&quot;], &quot;minimum&quot;: 0, &quot;maximum&quot;: 10},
         &quot;tasks&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;items&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;additionalProperties&quot;: false, &quot;required&quot;: [&quot;task&quot;, &quot;completed&quot;, &quot;steps&quot;, &quot;hesitations&quot;, &quot;wrong_turns&quot;, &quot;log&quot;],
           &quot;properties&quot;: {&quot;task&quot;: {&quot;type&quot;: &quot;string&quot;}, &quot;completed&quot;: {&quot;type&quot;: &quot;boolean&quot;}, &quot;steps&quot;: {&quot;type&quot;: &quot;integer&quot;, &quot;minimum&quot;: 0},
             &quot;hesitations&quot;: {&quot;type&quot;: &quot;integer&quot;, &quot;minimum&quot;: 0}, &quot;wrong_turns&quot;: {&quot;type&quot;: &quot;integer&quot;, &quot;minimum&quot;: 0}, &quot;log&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;items&quot;: {&quot;type&quot;: &quot;string&quot;}}}}}}},
